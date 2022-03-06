@@ -24,7 +24,7 @@ export const Header = () => {
         position="fixed"
         sx={{
           background: "rgba(12, 28, 44, 0.6)",
-          backdropFilter: "blur(16px)",
+          backdropFilter: "blur(24px)",
         }}
       >
         <Container maxWidth="lg">

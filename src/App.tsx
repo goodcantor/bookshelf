@@ -58,6 +58,7 @@ export const App = () => {
                 background: "rgba(12, 28, 44, 0.6)",
                 backdropFilter: "blur(24px)",
                 color: "white",
+                cursor: "pointer",
               }}
             >
               <CardMedia component="img" height="320" image={img} alt="image" />
