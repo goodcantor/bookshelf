@@ -7,6 +7,7 @@ import {
   CardContent,
   CardMedia,
   Container,
+  Grid,
   Typography,
 } from "@mui/material";
 import { CardBook } from "./components/Card";
@@ -40,44 +41,50 @@ export const App = () => {
           add book
         </Button>
       </Container>
-      <Container
-        maxWidth="lg"
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "20px",
-        }}
-      >
-        {mockup.map((card) => {
-          const { img, title, subtitle, author, rating } = card;
-          return (
-            <Card
-              sx={{
-                maxWidth: "370px",
-                background: "rgba(12, 28, 44, 0.6)",
-                backdropFilter: "blur(24px)",
-                color: "white",
-                cursor: "pointer",
-              }}
-            >
-              <CardMedia component="img" height="320" image={img} alt="image" />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {title}
-                </Typography>
-                <Typography variant="body2">{subtitle}</Typography>
-                <Typography variant="body1" sx={{ mt: "18px" }}>
-                  {author}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-              </CardActions>
-            </Card>
-          );
-        })}
+      <Container maxWidth="lg">
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+          justifyContent="center"
+        >
+          {mockup.map((card, index) => {
+            const { img, title, subtitle, author, rating } = card;
+            return (
+              <Grid item key={index}>
+                <Card
+                  sx={{
+                    maxWidth: "360px",
+                    background: "rgba(12, 28, 44, 0.6)",
+                    backdropFilter: "blur(24px)",
+                    color: "white",
+                    cursor: "pointer",
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="320"
+                    image={img}
+                    alt="image"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {title}
+                    </Typography>
+                    <Typography variant="body2">{subtitle}</Typography>
+                    <Typography variant="body1" sx={{ mt: "18px" }}>
+                      {author}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small">Share</Button>
+                    <Button size="small">Learn More</Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            );
+          })}
+        </Grid>
       </Container>
       <Bg />
     </AppWrap>
