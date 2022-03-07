@@ -9,11 +9,14 @@ import {
   Container,
   Grid,
   Typography,
+  makeStyles,
+  Rating,
 } from "@mui/material";
-import { CardBook } from "./components/Card";
 import { Header } from "./Header";
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { mockup } from "./mockup";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import PersonIcon from "@mui/icons-material/Person";
+import style from "@mui/material/styles";
 
 export const App = () => {
   return (
@@ -68,18 +71,25 @@ export const App = () => {
                     alt="image"
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {title}
-                    </Typography>
-                    <Typography variant="body2">{subtitle}</Typography>
-                    <Typography variant="body1" sx={{ mt: "18px" }}>
-                      {author}
-                    </Typography>
+                    <Title>{title}</Title>
+                    <Subtitle>{subtitle}</Subtitle>
+                    <WrapAuthor>
+                      <PersonIcon />
+                      <Author>{author}</Author>
+                      <RatingWhite
+                        name="simple-controlled"
+                        value={rating}
+                        size="medium"
+                        // onChange={(event, newValue) => {
+                        //   setValue(newValue);
+                        // }}
+                      />
+                    </WrapAuthor>
                   </CardContent>
-                  <CardActions>
+                  {/* <CardActions>
                     <Button size="small">Share</Button>
                     <Button size="small">Learn More</Button>
-                  </CardActions>
+                  </CardActions> */}
                 </Card>
               </Grid>
             );
@@ -104,4 +114,58 @@ const Bg = styled.div`
   z-index: -1;
 
   background: url("./bg.png") center/cover no-repeat;
+`;
+
+const Title = styled.h4`
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  margin-block-start: 0.6em;
+  margin-block-end: 0.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
+const Subtitle = styled.h5`
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  margin-block-start: 0.33em;
+  margin-block-end: 0.33em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  margin-bottom: 20px;
+`;
+
+const WrapAuthor = styled.div`
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 6px;
+`;
+
+const Author = styled.span`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  margin-left: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  margin-right: auto;
+`;
+
+// @ts-ignore
+const RatingWhite = styled(Rating)`
+  margin-right: 2px;
+  & > label > span {
+    color: white;
+  }
 `;
