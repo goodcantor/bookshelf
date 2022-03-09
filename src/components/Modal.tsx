@@ -10,6 +10,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+  borderRadius: "20px",
   width: 400,
   bgcolor: "background.paper",
   color: "black",
@@ -37,6 +38,7 @@ export const ModalButton = () => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        sx={{ bgcolor: "rgba(12, 28, 44, 0.1)", backdropFilter: "blur(8px)" }}
       >
         <Box sx={style}>
           <Typography
@@ -55,7 +57,7 @@ export const ModalButton = () => {
               mb: "20px",
             }}
           >
-            <TextField fullWidth label="fullWidth" id="fullWidth" />
+            <TextField fullWidth label="Book title" id="fullWidth" />
           </Box>
           <Box
             sx={{
@@ -64,7 +66,7 @@ export const ModalButton = () => {
               mb: "20px",
             }}
           >
-            <TextField fullWidth label="fullWidth" id="fullWidth" />
+            <TextField fullWidth label="Description" id="fullWidth" />
           </Box>
           <Box
             sx={{
@@ -73,7 +75,7 @@ export const ModalButton = () => {
               mb: "20px",
             }}
           >
-            <TextField fullWidth label="fullWidth" id="fullWidth" />
+            <TextField fullWidth label="Author" id="fullWidth" />
           </Box>
           <Box
             sx={{
@@ -82,7 +84,7 @@ export const ModalButton = () => {
               mb: "20px",
             }}
           >
-            <TextField fullWidth label="fullWidth" id="fullWidth" />
+            <TextField fullWidth label="Published" id="fullWidth" />
           </Box>
           <Box
             sx={{
@@ -91,9 +93,11 @@ export const ModalButton = () => {
               mb: "20px",
             }}
           >
-            <TextField fullWidth label="fullWidth" id="fullWidth" />
+            <TextField fullWidth label="Image link" id="fullWidth" />
           </Box>
-          <Button variant="contained" fullWidth>Save</Button>
+          <Button variant="contained" fullWidth>
+            Save
+          </Button>
         </Box>
       </Modal>
     </div>
