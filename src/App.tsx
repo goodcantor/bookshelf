@@ -16,7 +16,8 @@ import { Header } from "./Header";
 import { mockup } from "./mockup";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import PersonIcon from "@mui/icons-material/Person";
-import style from "@mui/material/styles";
+import { PopupFilter } from "./components/Popup";
+import { ModalButton } from "./components/Modal";
 
 export const App = () => {
   return (
@@ -32,17 +33,19 @@ export const App = () => {
         <span
           style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
         >
-          <FilterAltIcon />
+          {/* <FilterAltIcon />
           <Typography variant="h6" sx={{}}>
             Filter
-          </Typography>
+          </Typography> */}
+          <PopupFilter />
         </span>
-        <Button
+        <ModalButton />
+        {/* <Button
           variant="contained"
           sx={{ backgroundColor: "#3BC267", marginLeft: "32px" }}
         >
           add book
-        </Button>
+        </Button> */}
       </Container>
       <Container maxWidth="lg">
         <Grid
