@@ -20,6 +20,13 @@ import { PopupFilter } from "./components/Popup";
 import { ModalButton } from "./components/Modal";
 
 export const App = () => {
+  const [books, setBooks] = React.useState([]);
+
+  const handleSubmit = (book) => {
+    // @ts-ignore
+    setBooks([...books, book]);
+  };
+
   return (
     <AppWrap>
       <Header />
@@ -33,19 +40,9 @@ export const App = () => {
         <span
           style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
         >
-          {/* <FilterAltIcon />
-          <Typography variant="h6" sx={{}}>
-            Filter
-          </Typography> */}
           <PopupFilter />
         </span>
-        <ModalButton />
-        {/* <Button
-          variant="contained"
-          sx={{ backgroundColor: "#3BC267", marginLeft: "32px" }}
-        >
-          add book
-        </Button> */}
+        <ModalButton handleSubmit={handleSubmit} />
       </Container>
       <Container maxWidth="lg">
         <Grid
@@ -54,7 +51,7 @@ export const App = () => {
           columns={{ xs: 4, sm: 8, md: 12 }}
           justifyContent="center"
         >
-          {mockup.map((card, index) => {
+          {books.map((card, index) => {
             const { img, title, subtitle, author, rating } = card;
             return (
               <Grid item key={index}>

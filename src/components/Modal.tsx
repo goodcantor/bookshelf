@@ -19,10 +19,42 @@ const style = {
   p: 4,
 };
 
-export const ModalButton = () => {
+export const ModalButton = ({ handleSubmit }) => {
   const [open, setOpen] = React.useState(false);
+  const [data, setData] = React.useState({});
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const options = [
+    {
+      placeholder: "Title",
+      name: "title",
+    },
+    {
+      placeholder: "Description",
+      name: "subtitle",
+    },
+    {
+      placeholder: "Author",
+      name: "author",
+    },
+    {
+      placeholder: "Published",
+      name: "published",
+    },
+    {
+      placeholder: "Image link",
+      name: "img",
+    },
+  ];
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const handleClick = () => {
+    handleSubmit(data);
+    handleClose();
+  };
 
   return (
     <div>
@@ -50,52 +82,26 @@ export const ModalButton = () => {
           >
             Add book
           </Typography>
-          <Box
-            sx={{
-              width: 500,
-              maxWidth: "100%",
-              mb: "20px",
-            }}
-          >
-            <TextField fullWidth label="Book title" id="fullWidth" />
-          </Box>
-          <Box
-            sx={{
-              width: 500,
-              maxWidth: "100%",
-              mb: "20px",
-            }}
-          >
-            <TextField fullWidth label="Description" id="fullWidth" />
-          </Box>
-          <Box
-            sx={{
-              width: 500,
-              maxWidth: "100%",
-              mb: "20px",
-            }}
-          >
-            <TextField fullWidth label="Author" id="fullWidth" />
-          </Box>
-          <Box
-            sx={{
-              width: 500,
-              maxWidth: "100%",
-              mb: "20px",
-            }}
-          >
-            <TextField fullWidth label="Published" id="fullWidth" />
-          </Box>
-          <Box
-            sx={{
-              width: 500,
-              maxWidth: "100%",
-              mb: "20px",
-            }}
-          >
-            <TextField fullWidth label="Image link" id="fullWidth" />
-          </Box>
-          <Button variant="contained" fullWidth>
+          {options.map((option) => {
+            return (
+              <Box
+                sx={{
+                  width: 500,
+                  maxWidth: "100%",
+                  mb: "20px",
+                }}
+              >
+                <TextField
+                  fullWidth
+                  label={option.placeholder}
+                  name={option.name}
+                  id="fullWidth"
+                  onChange={handleChange}
+                />
+              </Box>
+            );
+          })}
+          <Button variant="contained" fullWidth onClick={handleClick}>
             Save
           </Button>
         </Box>
